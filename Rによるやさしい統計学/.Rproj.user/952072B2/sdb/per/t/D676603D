@@ -1,0 +1,17 @@
+{
+    "contents" : "#２章\n指導法<-c(\"C\",\"B\",\"A\",\"B\");\n\n心理学テスト<-c(13,14,7,12,10,6,8,15,4,4,9,6,10,12,5,12,8,8,12,15)\nhist(心理学テスト,breaks=10)\nsum(心理学テスト)\nmean(心理学テスト)\nmedian(心理学テスト)\ntable(心理学テスト)\nsqrt(心理学テスト)\nlength(心理学テスト)\nvar(心理学テスト)\nsummary(心理学テスト)\nsd(心理学テスト)\nz得点<-scale(心理学テスト)\nhist(z得点,breaks=10)\n\n######３章\n#相関\n統計テスト１<-c(6,10,6,10,5,3,5,9,3,3,11,6,11,9,7,5,8,7,7,9)\n統計テスト２<-c(10,13,8,15,8,6,9,10,7,3,18,14,18,11,12,5,7,12,7,7)\nplot(統計テスト１,統計テスト２)\nplot(心理学テスト,統計テスト１)\nplot(心理学テスト,統計テスト２)\ncov(統計テスト１,統計テスト２)#共分散の計算\ncor(統計テスト１,統計テスト２)#相関係数の計算\n\n#４章\n#正規分布\ncurve(dnorm(x,mean=0,sd=1),from=-4,to=4,add=TRUE)\ncurve(dnorm(x,mean=1,sd=2),from=-4,to=4,add=TRUE)\ncurve(dnorm(x,mean=1,sd=1),from=-4,to=4,add=TRUE)\ncurve(dnorm(x,mean=0,sd=1)+dnorm(x,mean=0,sd=1),from=-4,to=4,add=TRUE)\n\nrnorm(5,mean=50,sd=10)\nhist(rnorm(500,mean=0,sd=1))　#標準正規分布を推定して表示\ndnorm(5,mean=50,sd=10)\n\n#########余談\n#プリンを買う確率がポアソン分布に従うと仮定して\n#どれぐらい買うか考えてみる\n#poisはポアソン分布のやつ\n#まずtwitterを見て４月から７月１２までの約１５週間の間に買ったプリンの個数は１３個\n#つまり13/15がポアソン分布の母数λとなる。\n\nhist(rpois(1000,13/15)) #取りあえず図示!\n#つぎに1週間でプリンを食べない確率を求める\nppois(0,13/15)\n#一個だけ買う確率\ndpois(1,13/15)\n#３個以下買う確率\nppois(3,13/15)-dpois(0,13/15)\n\n\n#　※dpoisは起こる確率（確率密度関数の値）　ppoisは累積分布関数の値\n#############\n\n標本<-rnorm(10,mean=50,sd=10)\nsummary(標本)\n\n\n標本平均<-numeric(length=1000)\n\nfor(i in 1:10000){\n  標本<-rnorm(10,mean=50,sd=10)\n  標本平均[i]=mean(標本)\n}\nhist(標本平均,freq=FALSE)\n絶対値５以下<-ifelse(abs(標本平均-50)<=5,1,0)\ntable(絶対値５以下)\ncurve(dnorm(x,mean=50,sd=sqrt(10)),add=TRUE)\n\ncurve(1*x,from=0,to=6)\n\n\n#５章\n###t検定\n#帰無仮説　母平均は１２である\n#対立仮説　母平均は１２でない\nt.test(心理学テスト,mu=12,conf.level=0.95)\n#ｐ値が0.05以下ので、帰無仮説は破棄される。\n\n\n\n\n",
+    "created" : 1436675836912.000,
+    "dirty" : false,
+    "encoding" : "SHIFT-JIS",
+    "folds" : "",
+    "hash" : "1124165760",
+    "id" : "D676603D",
+    "lastKnownWriteTime" : 1436735394,
+    "path" : "C:/Users/FMV/Google Drive/software/R/Rによるやさしい統計学/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
